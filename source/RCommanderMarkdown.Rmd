@@ -1,0 +1,441 @@
+<!-- R Commander Markdown Template -->
+
+Replace with Main Title
+=======================
+
+### Your Name
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+```{r}
+Datos <- readXL("C:/Users/18-4004/Desktop/DATOS.xlsx", rownames=FALSE, header=TRUE, na="", sheet="Datos", 
+  stringsAsFactors=TRUE)
+```
+
+```{r}
+summary(Datos)
+```
+
+```{r}
+summary(Datos)
+```
+
+```{r}
+cor(Datos[,c("ASISTENCIA.LOCAL","CAPACIDAD.DE.ESTADOS","GOLES.A.FAVOR",
+  "GOLES.EN.CONTRA","PARTIDOS.EMPATADOS","PARTIDOS.GANADOS",
+  "PARTIDOS.JUGADOS","PARTIDOS.PERDIDOS","POSICION.HISTORICA",
+  "PUNTOS.GANADOS","TOTAL.TITULOS")], use="complete")
+```
+
+```{r}
+#Matriz de Correlacion
+```
+
+```{r}
+cor(Datos[,c("ASISTENCIA.LOCAL","CAPACIDAD.DE.ESTADOS","GOLES.A.FAVOR",
+  "GOLES.EN.CONTRA","PARTIDOS.EMPATADOS","PARTIDOS.GANADOS",
+  "PARTIDOS.JUGADOS","PARTIDOS.PERDIDOS","POSICION.HISTORICA",
+  "PUNTOS.GANADOS","TOTAL.TITULOS")], use="complete")
+```
+
+```{r}
+scatterplot(ASISTENCIA.LOCAL~PARTIDOS.GANADOS | EQUIPOS, reg.line=FALSE, smooth=FALSE, spread=FALSE, boxplots=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), 
+  by.groups=TRUE, data=Datos)
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS,
+   reg.line=FALSE, smooth=FALSE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos)
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS 
+  | EQUIPOS, reg.line=FALSE, smooth=FALSE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal= 'density', by.groups=TRUE, data=Datos)
+```
+
+```{r}
+#Matriz de diagramas de dispercion
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS,
+  
+   reg.line=FALSE, smooth=FALSE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos)
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS 
+  | EQUIPOS, reg.line=lm, smooth=TRUE, spread=FALSE, span=0.5, ellipse=TRUE, 
+  levels=c(.5, .9), id.n=0, diagonal= 'density', by.groups=FALSE, data=Datos, 
+  main="MATRIZ")
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS 
+  | EQUIPOS, reg.line=lm, smooth=TRUE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal= 'density', by.groups=FALSE, data=Datos, 
+  main="MATRIZ DE DIAGRAMAS DE DISPERSION")
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS,
+   reg.line=lm, smooth=TRUE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos, main="Matriz de Disgramas de 
+  Dispersion")
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS,
+   reg.line=lm, smooth=FALSE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos, main="Matriz de Disgramas de 
+  Dispersión")
+```
+
+```{r}
+#Matriz de diagramas de dispercion
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS,
+  
+   reg.line=lm, smooth=FALSE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos, main="Matriz de Disgramas de 
+  Dispersión")
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS,
+   reg.line=lm, smooth=TRUE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos, main="Matriz de Disgramas de 
+  Dispersión")
+```
+
+```{r}
+RegModel.1 <- lm(PARTIDOS.GANADOS~PUNTOS.GANADOS, data=Datos)
+summary(RegModel.1)
+```
+
+```{r}
+Reg_Lineal_Simple <- lm(PARTIDOS.GANADOS~PUNTOS.GANADOS, data=Datos)
+summary(Reg_Lineal_Simple)
+```
+
+```{r}
+library(MASS, pos=15)
+```
+
+```{r}
+Confint(Reg_Lineal_Simple, level=0.95)
+```
+
+```{r}
+oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
+```
+
+```{r}
+plot(Reg_Lineal_Simple)
+```
+
+```{r}
+par(oldpar)
+```
+
+```{r}
+Reg_Lineal_Simple <- lm(PARTIDOS.GANADOS~PUNTOS.GANADOS-1, data=Datos)
+```
+
+```{r}
+summary(Reg_Lineal_Simple)
+```
+
+```{r}
+scatterplot(PARTIDOS.GANADOS~PUNTOS.GANADOS | EQUIPOS, reg.line=lm, smooth=TRUE, spread=TRUE, id.method='mahal', id.n = 2, boxplots='xy', span=0.5, 
+  ellipse=FALSE, levels=c(.5, .9), by.groups=TRUE, data=Datos)
+```
+
+```{r}
+scatterplot(PARTIDOS.GANADOS~PUNTOS.GANADOS, reg.line=lm, smooth=TRUE, spread=TRUE, id.method='mahal', id.n = 2, boxplots='xy', span=0.5, ellipse=FALSE, 
+  levels=c(.5, .9), data=Datos)
+```
+
+```{r}
+scatterplot(PARTIDOS.GANADOS~PUNTOS.GANADOS, reg.line=lm, smooth=TRUE, spread=TRUE, id.method='mahal', id.n = 5, boxplots=FALSE, span=0.5, ellipse=FALSE, 
+  levels=c(.5, .9), main="Diagrama de Dispersión", data=Datos)
+```
+
+```{r}
+scatterplot(PARTIDOS.GANADOS~PUNTOS.GANADOS, reg.line=lm, smooth=TRUE, spread=TRUE, id.method='mahal', id.n = 5, boxplots=FALSE, span=0.5, ellipse=FALSE, 
+  levels=c(.5, .9), main="Diagrama de Dispersión", data=Datos)
+```
+
+```{r}
+anova(Reg_Lineal_Simple)
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS +ASISTENCIA.LOCAL -1, data=Datos)
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS -1, data=Datos)
+```
+
+```{r}
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+# Anova
+```
+
+```{r}
+anova(Reg_Linel_Multiple)
+```
+
+```{r}
+Confint(Reg_Linel_Multiple, level=0.95)
+```
+
+```{r}
+oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
+```
+
+```{r}
+plot(Reg_Linel_Multiple)
+```
+
+```{r}
+par(oldpar)
+```
+
+```{r}
+Datos<- within(Datos, {
+  fitted.Reg_Linel_Multiple <- fitted(Reg_Linel_Multiple)
+  hatvalues.Reg_Linel_Multiple <- hatvalues(Reg_Linel_Multiple) 
+})
+```
+
+```{r}
+library(rgl, pos=16)
+```
+
+```{r}
+library(nlme, pos=17)
+```
+
+```{r}
+library(mgcv, pos=17)
+```
+
+```{r}
+#Con estas dos variblas realizamos un MODELO DE REGRESION LINEAL SIMPLE
+```
+
+```{r}
+Reg_Lineal_Simple <- lm(PARTIDOS.GANADOS~PUNTOS.GANADOS, data=Datos)
+```
+
+```{r}
+summary(Reg_Lineal_Simple)
+```
+
+```{r}
+#Para refinar el modelo podemos eliminar el INTERSECTO
+```
+
+```{r}
+Reg_Lineal_Simple <- lm(PARTIDOS.GANADOS~PUNTOS.GANADOS-1, data=Datos)
+```
+
+```{r}
+summary(Reg_Lineal_Simple)
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS -1, data=Datos)
+```
+
+```{r}
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS, data=Datos)
+```
+
+```{r}
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS -1, data=Datos)
+```
+
+```{r}
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+#Ahora vamos a crear un MODELO DE REGRESION MULTIPLE
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS, data=Datos)
+```
+
+```{r}
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+# Anova
+```
+
+```{r}
+anova(Reg_Linel_Multiple)
+```
+
+```{r}
+#Matriz de Correlacion
+```
+
+```{r}
+cor(Datos[,c("ASISTENCIA.LOCAL","CAPACIDAD.DE.ESTADOS","GOLES.A.FAVOR",
+  "GOLES.EN.CONTRA","PARTIDOS.EMPATADOS","PARTIDOS.GANADOS",
+  "PARTIDOS.JUGADOS","PARTIDOS.PERDIDOS","POSICION.HISTORICA",
+  "PUNTOS.GANADOS","TOTAL.TITULOS")], use="complete")
+```
+
+```{r}
+scatterplotMatrix(~ASISTENCIA.LOCAL+CAPACIDAD.DE.ESTADOS+GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.EMPATADOS+PARTIDOS.GANADOS+PARTIDOS.JUGADOS+PARTIDOS.PERDIDOS+POSICION.HISTORICA+PUNTOS.GANADOS+TOTAL.TITULOS,
+  
+   reg.line=lm, smooth=FALSE, spread=FALSE, span=0.5, ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos, main="Matriz de Disgramas de 
+  Dispersión")
+```
+
+```{r}
+Reg_Lineal_Simple <- lm(PARTIDOS.GANADOS~PUNTOS.GANADOS, data=Datos)
+```
+
+```{r}
+summary(Reg_Lineal_Simple)
+```
+
+```{r}
+anova(Reg_Lineal_Simple)
+```
+
+```{r}
+#Intervalo de Confianza
+```
+
+```{r}
+library(MASS, pos=15)
+```
+
+```{r}
+Confint(Reg_Lineal_Simple, level=0.95)
+```
+
+```{r}
+#Grafica Basica de Diagnostico del Modelo
+```
+
+```{r}
+oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
+```
+
+```{r}
+plot(Reg_Lineal_Simple)
+```
+
+```{r}
+par(oldpar)
+```
+
+```{r}
+#Podemos observar de mejor manera mediante el DIAGRAMA DE DISPERCION
+```
+
+```{r}
+scatterplot(PARTIDOS.GANADOS~PUNTOS.GANADOS, reg.line=lm, smooth=TRUE, spread=TRUE, id.method='mahal', id.n = 5, boxplots=FALSE, span=0.5, ellipse=FALSE, 
+  levels=c(.5, .9), main="Diagrama de Dispersión", data=Datos)
+```
+
+```{r}
+#Ahora vamos a crear un MODELO DE REGRESION MULTIPLE
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS, data=Datos)
+```
+
+```{r}
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+# Anova
+```
+
+```{r}
+anova(Reg_Linel_Multiple)
+```
+
+```{r}
+Reg_Linel_Multiple <- lm(PARTIDOS.GANADOS ~ GOLES.A.FAVOR +PUNTOS.GANADOS + GOLES.EN.CONTRA +PARTIDOS.PERDIDOS -1, data=Datos)
+```
+
+```{r}
+summary(Reg_Linel_Multiple)
+```
+
+```{r}
+#Intervalos de confianza
+```
+
+```{r}
+Confint(Reg_Linel_Multiple, level=0.95)
+```
+
+```{r}
+#Graficas de Diagnosticos
+```
+
+```{r}
+oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
+```
+
+```{r}
+plot(Reg_Linel_Multiple)
+```
+
+```{r}
+par(oldpar)
+```
+
+```{r}
+#Grafica Basica de Diagnostico del Modelo (Residuales)
+```
+
+```{r}
+oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
+```
+
+```{r}
+plot(Reg_Linel_Multiple)
+```
+
+```{r}
+par(oldpar)
+```
+
+```{r}
+scatterplotMatrix(~GOLES.A.FAVOR+GOLES.EN.CONTRA+PARTIDOS.GANADOS+PARTIDOS.PERDIDOS+PUNTOS.GANADOS, reg.line=lm, smooth=TRUE, spread=FALSE, span=0.5, 
+  ellipse=FALSE, levels=c(.5, .9), id.n=0, diagonal = 'density', data=Datos, main="Matriz de Disgramas de Dispersión")
+```
+
